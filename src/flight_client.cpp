@@ -782,15 +782,17 @@ void ukv_paths_match(ukv_paths_match_t* c_ptr) {
 
     // Export the results into out expected form
     *c.match_counts = (ukv_length_t*)output_array_c.children[0]->buffers[1];
-    if (!request_only_counts) {
-        auto presences_ptr = (ukv_octet_t*)output_array_c.children[1]->buffers[0];
-        auto offs_ptr = (ukv_length_t*)output_array_c.children[1]->buffers[1];
-        auto data_ptr = (ukv_bytes_ptr_t)output_array_c.children[1]->buffers[2];
 
-        if (c.paths_offsets)
-            *c.paths_offsets = offs_ptr;
-        if (c.paths_strings)
-            *c.paths_strings = reinterpret_cast<ukv_char_t*>(data_ptr);
+    if (!request_only_counts) {
+        for (std::size_t i = 0; i < c.tasks_count; ++i) {
+            auto offs_ptr = (ukv_length_t*)output_array_c.children[i + 1]->buffers[1];
+            auto data_ptr = (ukv_bytes_ptr_t)output_array_c.children[i + 1]->buffers[2];
+
+            if (c.paths_offsets)
+                c.paths_offsets[i] = offs_ptr;
+            if (c.paths_strings)
+                c.paths_strings[i] = reinterpret_cast<ukv_char_t*>(data_ptr);
+        }
     }
 }
 

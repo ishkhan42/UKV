@@ -930,7 +930,11 @@ class UKVService : public arf::FlightServerBase {
             auto rounded_counts = arena.alloc<ukv_length_t>(result_length, 0);
             if (rounded_counts)
                 std::copy(found_counts, found_counts + tasks_count, rounded_counts.begin());
-            ukv_size_t collections_count = 1 + request_content;
+            else {
+                // is_empty_values = true;
+                rounded_counts = arena.alloc<ukv_length_t>(1, 0);
+            }
+            ukv_size_t collections_count = 1 + request_content * tasks_count;
             ukv_to_arrow_schema(result_length,
                                 collections_count,
                                 &output_schema_c,
@@ -948,17 +952,20 @@ class UKVService : public arf::FlightServerBase {
                 output_schema_c.children[0],
                 output_batch_c.children[0],
                 status.member_ptr());
-            if (request_content)
-                ukv_to_arrow_column( //
-                    result_length,
-                    kArgVals.c_str(),
-                    ukv_doc_field_bin_k,
-                    nullptr,
-                    found_offsets,
-                    found_values,
-                    output_schema_c.children[1],
-                    output_batch_c.children[1],
-                    status.member_ptr());
+            if (request_content) {
+                for (std::size_t i = 0; i < tasks_count; ++i) {
+                    ukv_to_arrow_column( //
+                        found_counts[i],
+                        kArgVals.c_str(),
+                        ukv_doc_field_bin_k,
+                        nullptr,
+                        &found_offsets[i],
+                        &found_values[i],
+                        output_schema_c.children[i + 1],
+                        output_batch_c.children[i + 1],
+                        status.member_ptr());
+                }
+            }
 
             if (!status)
                 return ar::Status::ExecutionError(status.message());
