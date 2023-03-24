@@ -14,7 +14,7 @@
       {
         "name": "main-dev",
         "channel": "alpha",
-        "prerelease": true
+        "prerelease": "${now}"
       }
     ],
     "debug": true,
