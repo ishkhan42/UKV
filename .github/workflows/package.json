@@ -7,14 +7,11 @@
   },
   "release": {
     "branches": [
-      {
-        "name": "main",
-        "channel": "latest"
-      },
+      "main",
       {
         "name": "main-dev",
-        "channel": "alpha",
-        "prerelease": "${now}"
+        "channel": "pre/rc",
+        "prerelease": "rc"
       }
     ],
     "debug": true,
