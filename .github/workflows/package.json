@@ -13,7 +13,7 @@
       },
       {
         "name": "main-dev",
-        "range": "1000",
+        "range": "10000",
         "channel": "next",
         "prerelease": true
       }
@@ -74,7 +74,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "echo '${nextRelease.version}' | sed 's/[a-zA-Z\\-]//g' > VERSION"
+          "prepareCmd": "echo '${nextRelease.version}' > VERSION"
         }
       ],
       [
