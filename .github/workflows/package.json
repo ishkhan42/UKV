@@ -9,8 +9,8 @@
     "branches": [
       "main",
       {
-        "name": "",
-        "channel": "main-dev",
+        "name": "main-dev",
+        "channel": "alpha",
         "prerelease": true
       }
     ],
