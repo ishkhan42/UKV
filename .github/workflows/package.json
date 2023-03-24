@@ -13,7 +13,7 @@
       },
       {
         "name": "main-dev",
-        "prerelease": ""
+        "prerelease": true
       }
     ],
     "debug": true,
