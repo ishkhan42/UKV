@@ -10,8 +10,7 @@
       "main",
       {
         "name": "main-dev",
-        "channel": "alpha",
-        "prerelease": true
+        "channel": "alpha"
       }
     ],
     "debug": true,
