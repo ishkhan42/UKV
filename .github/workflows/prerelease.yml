@@ -19,4 +19,4 @@ jobs:
         persist-credentials: false
         ref: 'main-dev'
     - uses: actions/setup-node@v3
-    - run: cp .github/workflows/package.json . && npm install && npx semantic-release --branches ["main-dev"]
+    - run: cp .github/workflows/package.json . && npm install && npx semantic-release
