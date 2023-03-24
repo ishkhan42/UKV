@@ -9,7 +9,7 @@
     "branches": [
       {
         "name": "main",
-        "channel": "@latest"
+        "channel": "latest"
       },
       {
         "name": "main-dev",
