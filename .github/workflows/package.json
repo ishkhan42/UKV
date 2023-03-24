@@ -13,7 +13,7 @@
       },
       {
         "name": "main-dev",
-        "prerelease": "v${version}"
+        "prerelease": "-pre"
       }
     ],
     "debug": true,
