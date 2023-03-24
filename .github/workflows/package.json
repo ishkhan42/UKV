@@ -10,7 +10,7 @@
       "main",
       {
         "name": "main-dev",
-        "channel": "pre/rc",
+        "channel": "next",
         "prerelease": "rc"
       }
     ],
