@@ -13,7 +13,7 @@
       },
       {
         "name": "main-dev",
-        "channel": "next"
+        "prerelease": "v${version}"
       }
     ],
     "debug": true,
