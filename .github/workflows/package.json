@@ -13,7 +13,7 @@
       },
       {
         "name": "main-dev",
-        "channel": "alpha"
+        "channel": "next"
       }
     ],
     "debug": true,
