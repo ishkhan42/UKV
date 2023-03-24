@@ -13,6 +13,8 @@
       },
       {
         "name": "main-dev",
+        "range": "1000",
+        "channel": "next",
         "prerelease": true
       }
     ],
